@@ -20,6 +20,15 @@ def submit():
 
     return "submitted successfully! for form data " 
 
+@app.route('/todohome')
+def todoHome():
+    return render_template('todo.html')
+
+@app.route('/todo',methods=['POST'])
+def todo():
+    form_data = dict(request.form)
+    requests.post(BACKEND_URL +'/submit', json=form_data)
+
 if __name__ == '__main__':
         app.run(host='127.0.0.1',port=4000,debug=True)
 
