@@ -39,6 +39,13 @@ def view():
     data = [dict(item) for item in data]  # Convert each item to a dictionary
     return data
 
+@app.route('/submittodoitem', methods=['POST'])
+def submitToDo():
+    form_data = request.get_json()
+    collection.insert_one(form_data)
+    # print(form_data)  # Print the form data to the console for debugging
+    return "submitted successfully! for todo data "
+
 if __name__ == '__main__':
         app.run(host='127.0.0.1',port=5000,debug=True)
 
